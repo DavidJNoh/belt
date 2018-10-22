@@ -16,4 +16,7 @@ public interface RatingRepository extends CrudRepository<Rating, Long> {
 
     @Query("SELECT r FROM Rating r WHERE r.user =?1 AND r.show =?2")
     Rating checkTwice(User user, Show show);
+    
+    @Query("Select r FROM Rating r WHERE r.show =?1 ORDER BY r.score ASC")
+    List<Rating> rateOrder(Show show);
 }

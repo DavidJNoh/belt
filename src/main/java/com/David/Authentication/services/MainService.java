@@ -34,7 +34,15 @@ public class MainService {
     public List<Show> getAllShows(){
         return showRepository.findAll();
     }
+    
+    public List<Show> getByRating(){
+        return showRepository.getByRating();
+    }
 
+    public List<Rating> ratingOrder(Show show){
+    	return ratingRepository.rateOrder(show);
+    }
+    
     // find user by email
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
@@ -104,5 +112,7 @@ public class MainService {
     public void deleteShowById(Long id){
         showRepository.deleteById(id);
     }
+    
+    
 
 }

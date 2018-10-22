@@ -21,7 +21,7 @@
         <th>Name</th>
         <th>Rating</th>
     </tr>
-    <c:forEach items="${show.getRatings()}" var="rating">
+    <c:forEach items="${ratings}" var="rating">
         <tr>
             <td>${rating.getUser().getName()}</td>
             <td>${rating.score}</td>

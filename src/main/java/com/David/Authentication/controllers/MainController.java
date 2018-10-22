@@ -87,7 +87,7 @@ public class MainController {
             Long userId = Long.parseLong(StringFirst);
             User u = userService.findUserById(userId);
             model.addAttribute("user", u);
-            List<Show> shows = userService.getAllShows();
+            List<Show> shows = userService.getByRating();
             model.addAttribute("shows", shows);
             return "dashboard.jsp";
         }
@@ -109,17 +109,9 @@ public class MainController {
         if(userService.firstRating(u, s)==false){
             System.out.println("Already rate");
         }
-//        for (int i=0; s.getRatings().size()>i; i++){
-//            System.out.println("Number of Ratings");
-//        }
-        double avg;
-        double total=0;
-        for (Rating r : s.getRatings()){
-            total += r.getScore();
-        }
-
-        System.out.print(total);
-
+        
+        List<Rating> ratings = userService.ratingOrder(s);
+        model.addAttribute("ratings", ratings);
 
         return "show.jsp";
     }
